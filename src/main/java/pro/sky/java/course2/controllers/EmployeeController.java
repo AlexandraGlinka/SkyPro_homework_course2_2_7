@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 import pro.sky.java.course2.model.Employee;
 import pro.sky.java.course2.service.EmployeeService;
 
+import java.util.Collection;
+
 @RestController
 @RequestMapping("/employee")
 public class EmployeeController {
@@ -17,7 +19,10 @@ public class EmployeeController {
     public EmployeeController(EmployeeService employeeService) {
         this.employeeService = employeeService;
     }
-
+    @GetMapping
+    public Collection<Employee> showEmployees() {
+        return employeeService.showEmployees();
+    }
     @GetMapping("/add")
     public void addEmployee(@RequestParam String firstName,
                             @RequestParam String lastName,

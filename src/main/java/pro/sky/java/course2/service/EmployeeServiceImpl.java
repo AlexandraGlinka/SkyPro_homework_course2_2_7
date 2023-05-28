@@ -5,6 +5,8 @@ import pro.sky.java.course2.exceptions.EmployeeAlreadyAddedException;
 import pro.sky.java.course2.exceptions.EmployeeNotFoundException;
 import pro.sky.java.course2.model.Employee;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 @Service
@@ -13,7 +15,10 @@ public class EmployeeServiceImpl implements EmployeeService{
     public EmployeeServiceImpl() {
         this.employeesMap = new HashMap<>();
     }
-
+    @Override
+    public Collection<Employee> showEmployees() {
+        return Collections.unmodifiableCollection(employeesMap.values());
+    }
     @Override
     public void addEmployee(Employee employee) {
         if (employeesMap.containsKey(employee.getFullName())) {
@@ -37,4 +42,6 @@ public class EmployeeServiceImpl implements EmployeeService{
         }
         return employeesMap.get(firstName + lastName);
     }
+
+
 }
