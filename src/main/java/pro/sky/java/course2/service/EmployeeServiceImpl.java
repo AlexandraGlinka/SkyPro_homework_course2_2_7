@@ -9,14 +9,17 @@ import java.util.HashMap;
 import java.util.Map;
 @Service
 public class EmployeeServiceImpl implements EmployeeService{
-    private Map<String, Employee> employeesMap = new HashMap<>();
+    private final Map<String, Employee> employeesMap;
+    public EmployeeServiceImpl() {
+        this.employeesMap = new HashMap<>();
+    }
 
     @Override
     public void addEmployee(Employee employee) {
-        if (employeesMap.containsKey(employee.getFirstName() + employee.getLastName())) {
+        if (employeesMap.containsKey(employee.getFullName())) {
             throw new EmployeeAlreadyAddedException("Сотрудник уже добавлен");
         }
-        employeesMap.put(employee.getFirstName() + employee.getLastName(), employee);
+        employeesMap.put(employee.getFullName(), employee);
     }
 
     @Override
