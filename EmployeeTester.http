@@ -2,4 +2,4 @@
 GET http://localhost:8080/employee
 
 ###
-GET http://localhost:8080/employee/add?firstName=Ivan&lastName=Ivanov&salary=100
+GET http://localhost:8080/employee/add?firstName=Ivan&lastName=Petrov&salary=100

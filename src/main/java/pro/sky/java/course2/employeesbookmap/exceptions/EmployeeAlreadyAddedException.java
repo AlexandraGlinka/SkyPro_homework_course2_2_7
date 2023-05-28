@@ -1,4 +1,4 @@
-package pro.sky.java.course2.exceptions;
+package pro.sky.java.course2.employeesbookmap.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

@@ -1,6 +1,6 @@
-package pro.sky.java.course2.service;
+package pro.sky.java.course2.employeesbookmap.service;
 
-import pro.sky.java.course2.model.Employee;
+import pro.sky.java.course2.employeesbookmap.model.Employee;
 
 import java.util.Collection;
 

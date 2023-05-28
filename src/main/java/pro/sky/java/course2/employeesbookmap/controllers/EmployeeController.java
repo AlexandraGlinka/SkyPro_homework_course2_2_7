@@ -1,12 +1,12 @@
-package pro.sky.java.course2.controllers;
+package pro.sky.java.course2.employeesbookmap.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import pro.sky.java.course2.model.Employee;
-import pro.sky.java.course2.service.EmployeeService;
+import pro.sky.java.course2.employeesbookmap.model.Employee;
+import pro.sky.java.course2.employeesbookmap.service.EmployeeService;
 
 import java.util.Collection;
 
