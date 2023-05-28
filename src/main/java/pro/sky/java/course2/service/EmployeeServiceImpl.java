@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 @Service
 public class EmployeeServiceImpl implements EmployeeService{
-    private final Map<String, Employee> employeesMap = new HashMap<>();
+    private Map<String, Employee> employeesMap = new HashMap<>();
 
     @Override
     public void addEmployee(Employee employee) {
