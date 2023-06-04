@@ -15,10 +15,7 @@ public class EmployeeServiceImpl implements EmployeeService{
     public EmployeeServiceImpl() {
         this.employeesMap = new HashMap<>();
     }
-    @Override
-    public Collection<Employee> showEmployees() {
-        return Collections.unmodifiableCollection(employeesMap.values());
-    }
+
     @Override
     public void addEmployee(Employee employee) {
         if (employeesMap.containsKey(employee.getFullName())) {
@@ -43,5 +40,13 @@ public class EmployeeServiceImpl implements EmployeeService{
         return employeesMap.get(firstName + lastName);
     }
 
+    @Override
+    public Collection<Employee> showEmployees() {
+        return Collections.unmodifiableCollection(employeesMap.values());
+    }
 
+    @Override
+    public Collection<Employee> getAllEmployees() {
+        return employeesMap.values();
+    }
 }
