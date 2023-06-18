@@ -1,8 +1,10 @@
 package pro.sky.java.course2.employeesbookmap.service;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 import pro.sky.java.course2.employeesbookmap.exceptions.EmployeeAlreadyAddedException;
 import pro.sky.java.course2.employeesbookmap.exceptions.EmployeeNotFoundException;
+import pro.sky.java.course2.employeesbookmap.exceptions.InvalidNameException;
 import pro.sky.java.course2.employeesbookmap.model.Employee;
 
 import java.util.Collection;
@@ -18,6 +20,11 @@ public class EmployeeServiceImpl implements EmployeeService{
 
     @Override
     public void addEmployee(Employee employee) {
+        validate(employee.getFirstName(), employee.getLastName());
+
+        employee.setFirstName(StringUtils.capitalize(employee.getFirstName().toLowerCase()));
+        employee.setLastName(StringUtils.capitalize(employee.getLastName().toLowerCase()));
+
         if (employeesMap.containsKey(employee.getFullName())) {
             throw new EmployeeAlreadyAddedException("Сотрудник уже добавлен");
         }
@@ -48,5 +55,13 @@ public class EmployeeServiceImpl implements EmployeeService{
     @Override
     public Collection<Employee> getAllEmployees() {
         return employeesMap.values();
+    }
+
+    private void validate(String... names) {
+        for (String name : names) { //names.iter
+            if (!StringUtils.isAlpha(name)) {
+                throw new InvalidNameException("Name must contain only letters");
+            }
+        }
     }
 }
