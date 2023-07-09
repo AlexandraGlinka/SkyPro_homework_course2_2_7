@@ -26,17 +26,18 @@ public class EmployeeServiceImpl implements EmployeeService{
         employee.setLastName(StringUtils.capitalize(employee.getLastName().toLowerCase()));
 
         if (employeesMap.containsKey(employee.getFullName())) {
-            throw new EmployeeAlreadyAddedException("Сотрудник уже добавлен");
+            throw new EmployeeAlreadyAddedException();
         }
         employeesMap.put(employee.getFullName(), employee);
     }
 
     @Override
-    public void removeEmployee(String firstName, String lastName) {
+    public short removeEmployee(String firstName, String lastName) {
         if (!employeesMap.containsKey(firstName + lastName)) {
             throw new EmployeeNotFoundException("Такого сотрудника не существует");
         }
         employeesMap.remove(firstName + lastName);
+        return 0;
     }
 
     @Override

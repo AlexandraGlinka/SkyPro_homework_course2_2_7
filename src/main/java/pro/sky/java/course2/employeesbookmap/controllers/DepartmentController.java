@@ -19,20 +19,25 @@ public class DepartmentController {
     public DepartmentController(DepartmentService departmentService) {
         this.departmentService = departmentService;
     }
+
     @GetMapping("/max-salary")
     public Employee findEmployeeWithMaxSalary(@RequestParam Integer department) {
         return departmentService.findEmployeeWithMaxSalary(department);
     }
+
     @GetMapping("/min-salary")
     public Employee findEmployeeWithMinSalary(@RequestParam Integer department) {
         return departmentService.findEmployeeWithMinSalary(department);
     }
+
     @GetMapping(value = "/all", params = "department") // только при наличии параметра
     public Collection<Employee> getEmployeesByDepartment(@RequestParam Integer department) {
         return departmentService.getEmployeesByDepartment(department);
     }
+
     @GetMapping("/all")
     public Map<Integer, List<Employee>> getEmployeesGroupedByDepartment() {
         return departmentService.getEmployeesGroupedByDepartment();
     }
+
 }
