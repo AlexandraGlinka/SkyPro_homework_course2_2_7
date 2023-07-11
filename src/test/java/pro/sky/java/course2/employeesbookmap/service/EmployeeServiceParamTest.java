@@ -1,8 +1,10 @@
 package pro.sky.java.course2.employeesbookmap.service;
 
+import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 import pro.sky.java.course2.employeesbookmap.model.Employee;
 
@@ -17,7 +19,9 @@ public class EmployeeServiceParamTest {
     public void shouldReturnCapitalizeName(String firstName, String lastName, String expected) {
         Employee employee = new Employee(firstName, lastName, 1000, 1);
         employeeService.addEmployee(employee);
-        String fullNameResult = employeeService.findEmployee(firstName, lastName).getFullName();
+        String firstNameRight = StringUtils.capitalize(firstName.toLowerCase());
+        String lastNameRight = StringUtils.capitalize(lastName.toLowerCase());
+        String fullNameResult = employeeService.findEmployee(firstNameRight, lastNameRight).getFullName();
 
         Assertions.assertEquals(expected, fullNameResult);
     }
