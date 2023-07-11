@@ -2,6 +2,7 @@ package pro.sky.java.course2.employeesbookmap.service;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import pro.sky.java.course2.employeesbookmap.model.Employee;
 
@@ -21,12 +22,12 @@ public class EmployeeServiceParamTest {
         Assertions.assertEquals(expected, fullNameResult);
     }
 
-    private static Stream<List> argumentsForCapitalizeTest() {
+    private static Stream<Arguments> argumentsForCapitalizeTest() {
         return Stream.of(
-                List.of("ivan", "ivanov", "Ivan Ivanov"),
-                List.of("iVan", "ivanoV", "Ivan Ivanov"),
-                List.of("IVan", "iVANOV", "Ivan Ivanov"),
-                List.of("IVAN", "IVanOV", "Ivan Ivanov")
+                Arguments.of("ivan", "ivanov", "IvanIvanov"),
+                Arguments.of("iVan", "ivanoV", "IvanIvanov"),
+                Arguments.of("IVan", "iVANOV", "IvanIvanov"),
+                Arguments.of("IVAN", "IVanOV", "IvanIvanov")
         );
     }
 }
