@@ -73,22 +73,29 @@ public class DepartmentServiceTest {
     @Test
     public void shouldReturnEmployeesByDepartment1() {
         Collection<Employee> employees = departmentService.getEmployeesByDepartment(1);
+        Collection<Employee> employeesResult = employeeList()
+                .stream()
+                .filter(employee -> employee.getDepartment() == 1)
+                .collect(Collectors.toList());
 
-        Assertions.assertEquals("[\n" +
-                "  {\n" +
-                "    \"firstName\": \"Ivan\",\n" +
-                "    \"lastName\": \"Ivanov\",\n" +
-                "    \"salary\": 1000,\n" +
-                "    \"department\": 1,\n" +
-                "    \"fullName\": \"IvanIvanov\"\n" +
-                "  },\n" +
-                "  {\n" +
-                "    \"firstName\": \"Pavel\",\n" +
-                "    \"lastName\": \"Sidorov\",\n" +
-                "    \"salary\": 1500,\n" +
-                "    \"department\": 1,\n" +
-                "    \"fullName\": \"PavelSidorov\"\n" +
-                "  }\n" +
-                "]", employees);
+        Assertions.assertEquals(employeesResult, employees);
     }
 }
+//        Assertions.assertEquals("[\n" +
+//                "  {\n" +
+//                "    \"firstName\": \"Ivan\",\n" +
+//                "    \"lastName\": \"Ivanov\",\n" +
+//                "    \"salary\": 1000,\n" +
+//                "    \"department\": 1,\n" +
+//                "    \"fullName\": \"IvanIvanov\"\n" +
+//                "  },\n" +
+//                "  {\n" +
+//                "    \"firstName\": \"Pavel\",\n" +
+//                "    \"lastName\": \"Sidorov\",\n" +
+//                "    \"salary\": 1500,\n" +
+//                "    \"department\": 1,\n" +
+//                "    \"fullName\": \"PavelSidorov\"\n" +
+//                "  }\n" +
+//                "]", employees);
+//    }
+
