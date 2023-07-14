@@ -1,21 +1,24 @@
 package pro.sky.java.course2.employeesbookmap.model;
 
+import java.util.Objects;
+
 public class Employee {
     private String firstName;
+
     private String lastName;
+
     private Integer salary;
     private Integer department;
-
     public Employee(String firstName, String lastName, Integer salary, Integer department) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.salary = salary;
         this.department = department;
     }
-
     public String getFullName() {
         return firstName + lastName;
     }
+
     public String getFirstName() {
         return firstName;
     }
@@ -23,7 +26,6 @@ public class Employee {
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
-
     public String getLastName() {
         return lastName;
     }
@@ -36,6 +38,7 @@ public class Employee {
         return salary;
     }
 
+
     public void setSalary(Integer salary) {
         this.salary = salary;
     }
@@ -46,5 +49,18 @@ public class Employee {
 
     public void setDepartment(Integer department) {
         this.department = department;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Employee employee = (Employee) o;
+        return firstName.equals(employee.firstName) && lastName.equals(employee.lastName) && salary.equals(employee.salary) && department.equals(employee.department);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(firstName, lastName, salary, department);
     }
 }
